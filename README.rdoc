@@ -60,9 +60,13 @@ and "app2:lifeline" are much better).
   end
   
   > rake -T appname
-  rake appname:lifeline   # A lifeline task for executing only one process of twitter:daemon:run at a time
-  rake appname:run        # Runs the twitter:daemon:run task
-  rake appname:terminate  # Terminates any running twitter:daemon:lifeline tasks
+  rake appname:lifeline   # A lifeline task for executing only one process of appname:run at a time
+  rake appname:run        # Runs the appname:run task
+  rake appname:terminate  # Terminates any running appname:lifeline tasks
+
+== Installation
+
+* gem install lifeline
 
 == Note on Patches/Pull Requests
  
@@ -73,6 +77,12 @@ and "app2:lifeline" are much better).
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
+
+== Contributors
+
+* Matt Todd
+* Jacob Harris
+* Ben Koski
 
 == Copyright
 
