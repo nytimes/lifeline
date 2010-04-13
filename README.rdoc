@@ -8,6 +8,38 @@ lifeline rake tasks for managing lifelines.
 
 == The Lifeline Approach
 
+For all their history, daemons can be problematic. For starters, mechanisms
+for restarting daemons that have failed often rely on a third-party
+application like monit which is itself a daemon. In addition, PID-based
+mechanisms to ensure only one daemon is running at a time fail in both ways,
+sometimes preventing a daemon from starting up and other times not preventing
+multiple instances from running.
+
+The lifeline pattern (originally presented to me by Matt Todd of Highgroove
+Studios) is a different approach that uses a cron job that runs every minute
+as a lifeline to restart the daemon process if it has died. This lifeline
+calls ps to see if another instance of the same command is already running. If
+it is, the lifeline exits immediately. Otherwise, it stays running
+indefinitely (Cron starts all jobs via a fork, so it can run forever without
+stalling out cron). The trick is figuring out the right invocation to ps to
+ensure you are only checking for apps with the same name. But the lifeline gem
+handles all this to you.
+
+Although lifelines can work well for processes that run forever, the technique
+can also be used to safeguard any code you only want to run a single instance
+of at a time (eg, if you have a cron job that runs every 5 minutes and you
+want to ensure it doesn't run 2 processes should the first cron job get
+delayed.)
+
+== How a Lifeline Works
+
+More specifically, the lifeline method (and rake task that calls it) does the following steps:
+
+* Get a list of all running processes
+* Find the name of the current process by looking for the command associated with the current process id (the $$ variable)
+* If there is another process with the same command string, return and exit
+* Otherwise yield to run the passed block.
+
 == Examples
 
   Lifeline.lifeline do
