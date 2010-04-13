@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{lifeline}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jacob Harris", "Ben Koski", "Matt Todd"]
@@ -23,7 +23,24 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "doc/Lifeline.html",
+     "doc/Lifeline/LifelineRakeTask.html",
+     "doc/_index.html",
+     "doc/class_list.html",
+     "doc/css/common.css",
+     "doc/css/full_list.css",
+     "doc/css/style.css",
+     "doc/file.README.html",
+     "doc/file_list.html",
+     "doc/frames.html",
+     "doc/index.html",
+     "doc/js/app.js",
+     "doc/js/full_list.js",
+     "doc/js/jquery.js",
+     "doc/method_list.html",
+     "doc/top-level-namespace.html",
      "lib/lifeline.rb",
+     "lifeline.gemspec",
      "test/helper.rb",
      "test/test_lifeline.rb"
   ]
