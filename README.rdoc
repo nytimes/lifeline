@@ -1,6 +1,24 @@
 = lifeline
 
-Description goes here.
+Methods for creating lifeline tasks. This allows you to write cron jobs that
+restart processes that die while ensuring the code is only executing only once
+(avoiding the duplication that sometimes happens using the 'daemons') gem.
+Both a generic lifeline method is provided as well as methods to create 3
+lifeline rake tasks for managing lifelines.
+
+== The Lifeline Approach
+
+== Examples
+
+  Lifeline.lifeline do
+    # some code you want to run in only a single process
+  end
+  
+  Lifeline.define_lifeline_tasks("appname") do
+    # some code you want to run in a single lifeline
+  end
+  
+  > rake -T appname
 
 == Note on Patches/Pull Requests
  
