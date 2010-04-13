@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Lifeline</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (L)</a> &raquo; 
+    
+    
+    <span class="title">Lifeline</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Lifeline 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/lifeline.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <a href="Lifeline/LifelineRakeTask.html" title="Lifeline::LifelineRakeTask (class)">LifelineRakeTask</a>
+    
+  
+</p>
+
+
+
+  
+    <h2>Instance Method Summary</h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#define_lifeline_tasks-instance_method" title="#define_lifeline_tasks (instance method)">- (Object) <strong>define_lifeline_tasks</strong>(namespace, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A method that defines 3 rake tasks for doing lifelines:
+</p>
+<ul>
+<li><tt>namespace:run</tt> runs the specified block
+
+</li>
+<li><tt>namespace:lifeline</tt> a lifeline for executing only a single copy of
+<tt>namespace:run</tt> at a time
+
+</li>
+<li><tt>namespace:terminate</tt> a task for terminating the lifelines.
+
+</li>
+</ul>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_process_list-instance_method" title="#get_process_list (instance method)">- (Object) <strong>get_process_list</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lifeline-instance_method" title="#lifeline (instance method)">- (Object) <strong>lifeline</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A method for executing a block of code only if there is no other process
+with the same command running.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="define_lifeline_tasks-instance_method">
+  
+    - (<tt>Object</tt>) <strong>define_lifeline_tasks</strong>(namespace, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A method that defines 3 rake tasks for doing lifelines:
+</p>
+<ul>
+<li><tt>namespace:run</tt> runs the specified block
+
+</li>
+<li><tt>namespace:lifeline</tt> a lifeline for executing only a single copy of
+<tt>namespace:run</tt> at a time
+
+</li>
+<li><tt>namespace:terminate</tt> a task for terminating the lifelines
+
+</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>, <tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>namespace</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the namespace to define the 3 tasks in
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+        <span class='name'>&amp;block</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+a block which defines the body of the namespace:run method
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if you do not pass in a block argument
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/lifeline.rb', line 129</span>
+
+<span class='def def kw'>def</span> <span class='define_lifeline_tasks identifier id'>define_lifeline_tasks</span><span class='lparen token'>(</span><span class='namespace identifier id'>namespace</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='LifelineRakeTask constant id'>LifelineRakeTask</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='namespace identifier id'>namespace</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_process_list-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_process_list</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/lifeline.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='get_process_list identifier id'>get_process_list</span>
+  <span class='processes identifier id'>processes</span> <span class='assign token'>=</span> <span class='xstring val'>%x{ps ax -o pid,command}</span>
+
+  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='if if_mod kw'>if</span> <span class='processes identifier id'>processes</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+
+  <span class='processes identifier id'>processes</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/\n/</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='p identifier id'>p</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='p identifier id'>p</span> <span class='match op'>=~</span> <span class='regexp val'>/^(\d+)\s(.+)$/</span>
+      <span class='lbrace token'>{</span><span class='symbol val'>:pid</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='$1 nth_ref id'>$1</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='comma token'>,</span> <span class='symbol val'>:command</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='$2 nth_ref id'>$2</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='compact identifier id'>compact</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="lifeline-instance_method">
+  
+    - (<tt>Object</tt>) <strong>lifeline</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A method for executing a block of code only if there is no other process
+with the same command running. This is useful if you want to have a
+perpetually running daemon that only executes once at a time. It uses the
+process name returned by ps ax to see if there is a process with the same
+command name but a different PID already executing. If so, it terminates
+without running the block. NOTE: since it uses the command name returned
+from <tt>ps ax</tt>, it us up to to you to name the process containing this
+code with a distinctly unique name. If two separate Rails projects both
+have a <tt>rake lifeline</tt> task they WILL interfere with each other.
+I&#8217;d suggest prefixing with the project name (ie,
+<tt>doc_viewer:lifeline</tt>) to be sure
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+        <span class='name'>&amp;block</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+a block which is executed if there is not already a lifeline running.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if you do not pass in a block argument
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/lifeline.rb', line 29</span>
+
+<span class='def def kw'>def</span> <span class='lifeline identifier id'>lifeline</span>
+  <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='block_given? fid id'>block_given?</span>
+    <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='string val'>&quot;You must pass in a block to be the body of the run rake task&quot;</span>
+  <span class='end end kw'>end</span>
+
+  <span class='my_pid identifier id'>my_pid</span> <span class='assign token'>=</span> <span class='$$ gvar id'>$$</span>
+  <span class='processes identifier id'>processes</span> <span class='assign token'>=</span> <span class='get_process_list identifier id'>get_process_list</span>
+
+  <span class='if if kw'>if</span> <span class='processes identifier id'>processes</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='orop op'>||</span> <span class='processes identifier id'>processes</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No processes being returned by get_process_list. Aborting!&quot;</span>
+  <span class='end end kw'>end</span>
+
+  <span class='myself identifier id'>myself</span> <span class='assign token'>=</span> <span class='processes identifier id'>processes</span><span class='dot token'>.</span><span class='detect identifier id'>detect</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='p identifier id'>p</span><span class='bitor op'>|</span> <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:pid</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='my_pid identifier id'>my_pid</span><span class='rbrace token'>}</span>
+  <span class='if if kw'>if</span> <span class='myself identifier id'>myself</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;Unable to find self in process list. This is bizarre to say the least. Exiting&quot;</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># there isn't already another process running with the same command</span>
+  <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='processes identifier id'>processes</span><span class='dot token'>.</span><span class='any? fid id'>any?</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='p identifier id'>p</span><span class='bitor op'>|</span> <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:pid</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='my_pid identifier id'>my_pid</span> <span class='andop op'>&amp;&amp;</span> <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:command</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='myself identifier id'>myself</span><span class='lbrack token'>[</span><span class='symbol val'>:command</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span>
+    <span class='yield yield kw'>yield</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Apr 13 12:07:29 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

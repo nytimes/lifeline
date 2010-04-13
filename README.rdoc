@@ -40,6 +40,15 @@ More specifically, the lifeline method (and rake task that calls it) does the fo
 * If there is another process with the same command string, return and exit
 * Otherwise yield to run the passed block.
 
+Note that you do not pass a command name to the lifeline, it uses the command
+of the process invoking the Lifeline code. This means if you call lifeline
+code simultaneously from a Rake task and a Rails process, it will be executed
+in both cases (it's NOT a mutex or semaphore). Also, this mechanism uses a
+global namespace. means you will want to give unique names to the processes
+that ultimately invoke your lifeline code. If app1 and app2 both have a rake
+task named "lifeline," they will interfere with each other ("app1:lifeline"
+and "app2:lifeline" are much better).
+
 == Examples
 
   Lifeline.lifeline do
@@ -51,6 +60,9 @@ More specifically, the lifeline method (and rake task that calls it) does the fo
   end
   
   > rake -T appname
+  rake appname:lifeline   # A lifeline task for executing only one process of twitter:daemon:run at a time
+  rake appname:run        # Runs the twitter:daemon:run task
+  rake appname:terminate  # Terminates any running twitter:daemon:lifeline tasks
 
 == Note on Patches/Pull Requests
  
