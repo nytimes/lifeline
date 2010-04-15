@@ -10,7 +10,7 @@ module Lifeline
     return nil if processes.nil?
 
     processes.split(/\n/).map do |p|
-      if p =~ /^\s+(\d+)\s(.+)$/
+      if p =~ /^\s*(\d+)\s(.+)$/
         {:pid => $1.to_i, :command => $2.strip}
       end
     end.compact
