@@ -10,7 +10,7 @@ module Lifeline
     return nil if processes.nil?
 
     processes.split(/\n/).map do |p|
-      if p =~ /^(\d+)\s(.+)$/
+      if p =~ /^\s+(\d+)\s(.+)$/
         {:pid => $1.to_i, :command => $2.strip}
       end
     end.compact
@@ -40,7 +40,7 @@ module Lifeline
 
     myself = processes.detect {|p| p[:pid] == my_pid}
     if myself.nil?
-      raise "Unable to find self in process list. This is bizarre to say the least. Exiting"
+      raise "Unable to find self (PID=#{my_pid}) in process list. This is bizarre to say the least. Exiting.\n#{processes.map {|p| p.inspect}.join("\n")}"
     end
 
     # there isn't already another process running with the same command
