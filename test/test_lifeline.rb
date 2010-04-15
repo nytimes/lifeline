@@ -18,6 +18,25 @@ class TestLifeline < Test::Unit::TestCase
         assert_kind_of(String, p[:command])
       end
     end
+    
+    context '' do
+      setup do
+ps_output = <<EOF
+ 2070 ps ax -o pid,command
+10096 searchd --pidfile --config /mnt/apps/doc_viewer/releases/20100329193155/config/internal_production.sphinx.conf
+EOF
+        self.expects(:get_processes_from_shell).returns(ps_output)
+        @processes = get_process_list
+      end
+
+      should "handle whitespace in the front of the PID correctly" do
+        assert @processes.any? {|x| x[:pid] == 2070}
+      end
+      
+      should "handle a lack of whitespace in front of the PID correctly" do
+        assert @processes.any? {|x| x[:pid] == 10096}
+      end
+    end
   end
   
   context "lifeline" do

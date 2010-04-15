@@ -4,8 +4,14 @@ require 'rake/tasklib'
 module Lifeline
   ##
   # @private
+  def get_processes_from_shell
+     %x{ps ax -o pid,command}
+  end
+  
+  ##
+  # @private
   def get_process_list
-    processes = %x{ps ax -o pid,command}
+    processes = get_processes_from_shell
 
     return nil if processes.nil?
 
